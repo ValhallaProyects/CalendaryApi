@@ -22,9 +22,12 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## 🚀 Getting Started 
+### 🟠 Pre-requirements
+* npm
+* node
+* docker
 
 ## Installation
 
@@ -34,6 +37,23 @@ $ npm install
 
 ## Running the app
 
+- First step initialize docker:
+
+```bash
+# create conteiner with postgreSQL
+$ npm run dockerUp
+
+# optional : view container information
+$ npm run dockerView
+
+# opcional : stop the active containers
+$ npm run dockerStop
+
+# opcional : starts existing containers
+$ npm run dockerStart
+```
+
+- Second step initialize api:
 ```bash
 # development
 $ npm run start
@@ -58,16 +78,26 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Support
+## 🖥 Technologies
+* node
+* nest
+* jwt
+* postgreSQL
+* jest
+* passport
+* swagger
+* sequelize
+* typescript
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+## 👥 Authors
+* 👨🏻‍💻  [Leonardo Fontan](https://github.com/Lio-n)
 
-## Stay in touch
+## Useful resources
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+- ### [Docker Docs](https://docs.docker.com/reference/)
+- ### [Nestjs Docs](https://docs.nestjs.com/)
+- ### [Sequelize Docs](https://sequelize.org/)
+- ### [Validation decorators](https://github.com/typestack/class-validator#validation-decorators)
+- ### [How to Handle Database Timezones](https://www.databasestar.com/database-timezones/)
+- ### [Sequelize Docs](https://www.databasestar.com/database-timezones/)
+- ### [Decorators and some other features for sequelize](https://github.com/sequelize/sequelize-typescript#sequelize-typescript)
