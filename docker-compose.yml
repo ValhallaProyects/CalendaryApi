@@ -1,0 +1,16 @@
+version: "3.8"
+volumes:
+  database:
+    driver: local
+  redis:
+    driver: local
+services:
+  postgres:
+    container_name: postgres_container
+    image: postgres:13-alpine
+    restart: unless-stopped
+    env_file: .env.dev
+    volumes:
+      - database:/var/lib/postgresql/data
+    ports:
+      - 8008:5432
