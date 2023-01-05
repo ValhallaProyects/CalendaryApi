@@ -22,6 +22,10 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
+## Documentation 
+
+### All the Calendary documentation is here in **[Notion](https://jungle-tea-1ef.notion.site/Calendary-App-Docs-6ed8a93a8c1d4d5a92a718c61caef648)**
+<br/>
 
 ## 🚀 Getting Started 
 ### 🟠 Pre-requirements
