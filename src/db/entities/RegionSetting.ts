@@ -2,7 +2,6 @@ import {
   Table,
   Column,
   Model,
-  DeletedAt,
   UpdatedAt,
   CreatedAt,
   BelongsTo,
@@ -35,9 +34,6 @@ export class RegionSetting extends Model {
   @Column({ type: DataType.STRING(2) })
   languaje: string;
 
-  @Column({ type: DataType.DATE })
-  timezone: Date;
-
   @AllowNull(false)
   @Default('24')
   @Column(DataType.ENUM(...['12', '24']))
@@ -48,20 +44,18 @@ export class RegionSetting extends Model {
   @Column(DataType.ENUM(...['MM-DD-YYYY', 'DD-MM-YYYY', 'YYYY-MM-DD']))
   dateformat: string;
 
+  @ForeignKey(() => UserSetting)
+  @Column(DataType.INTEGER)
+  userSettingId: number;
+
   @CreatedAt
   createdAt: Date;
 
   @UpdatedAt
   updatedAt: Date;
 
-  @DeletedAt
-  deletedAt: Date;
-
+  // $ Relationship
   @BelongsTo(() => UserSetting)
-  userSetting: UserSetting;
-
-  @ForeignKey(() => UserSetting)
-  @Column(DataType.INTEGER)
-  userSettingId: number;
+  UserSetting: UserSetting;
 }
 // Error: @Column annotation is missing for "timeformat" of class "RegionSetting" or annotation order is wrong.

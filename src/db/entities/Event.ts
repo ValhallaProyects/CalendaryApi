@@ -2,7 +2,6 @@ import {
   Table,
   Column,
   Model,
-  DeletedAt,
   UpdatedAt,
   CreatedAt,
   BelongsTo,
@@ -12,7 +11,7 @@ import {
 import { User } from './User';
 
 @Table
-export class Calendar extends Model {
+export class Event extends Model {
   @Column({
     type: DataType.INTEGER,
     unique: true,
@@ -27,11 +26,17 @@ export class Calendar extends Model {
   @Column({ type: DataType.STRING(70) })
   title: string;
 
+  @Column({ type: DataType.STRING })
+  description: string;
+
   @Column({ type: DataType.STRING(7) })
   colorCard: string;
 
-  @Column({ type: DataType.STRING })
-  description: string;
+  @Column({ type: DataType.ARRAY(DataType.INTEGER) })
+  days: number[];
+
+  @Column({ type: DataType.ARRAY(DataType.STRING) })
+  hours: string[];
 
   @Column({ type: DataType.DATE() })
   dateEnd: Date;
@@ -39,19 +44,21 @@ export class Calendar extends Model {
   @Column({ type: DataType.DATE() })
   dateStart: Date;
 
+  @ForeignKey(() => User)
+  @Column(DataType.INTEGER)
+  ownerId: number;
+
+  @ForeignKey(() => User)
+  @Column({ type: DataType.ARRAY(DataType.INTEGER) })
+  guestsId: number[];
+
   @CreatedAt
   createdAt: Date;
 
   @UpdatedAt
   updatedAt: Date;
 
-  @DeletedAt
-  deletedAt: Date;
-
+  // $ Relationship
   @BelongsTo(() => User)
   user: User;
-
-  @ForeignKey(() => User)
-  @Column(DataType.INTEGER)
-  userId: number;
 }

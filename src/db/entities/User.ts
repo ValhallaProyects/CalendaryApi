@@ -4,15 +4,15 @@ import {
   Model,
   HasMany,
   HasOne,
-  DeletedAt,
   UpdatedAt,
   CreatedAt,
   ForeignKey,
   DataType,
 } from 'sequelize-typescript';
 import { UserSetting } from './UserSetting';
-import { Calendar } from './Calendar';
+import { Event } from './Event';
 import { Auth } from './Auth';
+import { Friendship } from './Friendship';
 
 @Table
 export class User extends Model {
@@ -34,10 +34,15 @@ export class User extends Model {
   profilePicture: string;
 
   @Column({ type: DataType.STRING(30) })
-  firstName: string;
+  fullName: string;
 
-  @Column({ type: DataType.STRING(30) })
-  lastName: string;
+  @ForeignKey(() => UserSetting)
+  @Column(DataType.INTEGER)
+  userSettingId: number;
+
+  @ForeignKey(() => Event)
+  @Column({ type: DataType.ARRAY(DataType.INTEGER) })
+  eventsId: number[];
 
   @CreatedAt
   createdAt: Date;
@@ -45,25 +50,18 @@ export class User extends Model {
   @UpdatedAt
   updatedAt: Date;
 
-  @DeletedAt
-  deletedAt: Date;
-
-  @ForeignKey(() => UserSetting)
-  @Column(DataType.INTEGER)
-  userSettingId: number;
-
-  @HasOne(() => UserSetting)
-  userSetting: UserSetting;
-
-  @ForeignKey(() => Calendar)
-  @Column({ type: DataType.ARRAY(DataType.INTEGER) })
-  eventsId: number[];
-
-  @HasMany(() => Calendar)
-  calendar: Calendar[];
+  // $ Relationship
+  @HasMany(() => Event)
+  Event: Event[];
 
   @HasOne(() => Auth)
-  auth: Auth;
+  Auth: Auth;
+
+  @HasMany(() => Friendship)
+  Friendship: Friendship[];
+
+  @HasOne(() => UserSetting)
+  UserSetting: UserSetting;
 }
 /* Docs : https://github.com/sequelize/sequelize-typescript/issues/754 */
 // Foreign key for "User" is missing on "UserSetting"

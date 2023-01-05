@@ -5,15 +5,13 @@ import {
   UpdatedAt,
   CreatedAt,
   ForeignKey,
-  BelongsTo,
-  HasOne,
   DataType,
+  BelongsTo,
 } from 'sequelize-typescript';
-import { RegionSetting } from './RegionSetting';
 import { User } from './User';
 
 @Table
-export class UserSetting extends Model {
+export class Friendship extends Model {
   @Column({
     type: DataType.INTEGER,
     unique: true,
@@ -22,19 +20,13 @@ export class UserSetting extends Model {
   })
   id: number;
 
-  @Column({ type: DataType.ARRAY(DataType.STRING) })
-  tags: string[];
-
-  @Column({ type: DataType.STRING(7) })
-  colorTheme: string;
-
-  @ForeignKey(() => RegionSetting)
+  @ForeignKey(() => User)
   @Column(DataType.INTEGER)
-  regionSettingId: number;
+  requesterId: number;
 
   @ForeignKey(() => User)
   @Column(DataType.INTEGER)
-  userId: number;
+  addresseeId: number;
 
   @CreatedAt
   createdAt: Date;
@@ -43,9 +35,8 @@ export class UserSetting extends Model {
   updatedAt: Date;
 
   // $ Relationship
-  @HasOne(() => RegionSetting)
-  regionSetting: RegionSetting;
-
   @BelongsTo(() => User)
   user: User;
 }
+/* Docs : https://github.com/sequelize/sequelize-typescript/issues/754 */
+// Foreign key for "User" is missing on "UserSetting"

@@ -6,8 +6,9 @@ import {
   User,
   UserSetting,
   Auth,
-  Calendar,
   RegionSetting,
+  Event,
+  Friendship,
 } from './db/entities';
 import { JwtStrategy } from './features/auth/strategies/jwt.strategy';
 
@@ -21,7 +22,7 @@ import { JwtStrategy } from './features/auth/strategies/jwt.strategy';
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
-      models: [User, UserSetting, Auth, Calendar, RegionSetting],
+      models: [User, UserSetting, Auth, RegionSetting, Event, Friendship],
       autoLoadModels: true,
       synchronize: true,
     }),

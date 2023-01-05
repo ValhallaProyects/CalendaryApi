@@ -2,7 +2,6 @@ import {
   Table,
   Column,
   Model,
-  DeletedAt,
   UpdatedAt,
   CreatedAt,
   ForeignKey,
@@ -30,19 +29,17 @@ export class Auth extends Model {
   @Column({ type: DataType.DATE, validate: { isDate: true } })
   expires: Date;
 
+  @ForeignKey(() => User)
+  @Column
+  userId: number;
+
   @CreatedAt
   createdAt: Date;
 
   @UpdatedAt
   updatedAt: Date;
 
-  @DeletedAt
-  deletedAt: Date;
-
-  @ForeignKey(() => User)
-  @Column
-  userId: number;
-
+  // $ Relationship
   @BelongsTo(() => User)
-  user: User;
+  User: User;
 }

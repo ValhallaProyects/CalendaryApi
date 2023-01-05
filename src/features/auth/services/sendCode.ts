@@ -6,7 +6,9 @@ const sendCode = async (email: string): Promise<number> => {
 
   if (!recAuth) {
     const recUser = await createUser({ email });
+    console.log(`🚀 ~ recUser:`, recUser);
     recAuth = await createAuth({ email, userId: recUser.id });
+    console.log(`🚀 ~ recAuth:`, recAuth);
   }
 
   const code = await addCodeToAuth(recAuth);
