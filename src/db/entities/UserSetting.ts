@@ -6,10 +6,10 @@ import {
   CreatedAt,
   ForeignKey,
   BelongsTo,
-  HasOne,
   DataType,
+  AllowNull,
+  Default,
 } from 'sequelize-typescript';
-import { RegionSetting } from './RegionSetting';
 import { User } from './User';
 
 @Table
@@ -28,9 +28,18 @@ export class UserSetting extends Model {
   @Column({ type: DataType.STRING(7) })
   colorTheme: string;
 
-  @ForeignKey(() => RegionSetting)
-  @Column(DataType.INTEGER)
-  regionSettingId: number;
+  @Column({ type: DataType.STRING(2) })
+  languaje: string;
+
+  @AllowNull(false)
+  @Default('24')
+  @Column(DataType.ENUM(...['12', '24']))
+  timeformat: string;
+
+  @AllowNull(false)
+  @Default('YYYY-MM-DD')
+  @Column(DataType.ENUM(...['MM-DD-YYYY', 'DD-MM-YYYY', 'YYYY-MM-DD']))
+  dateformat: string;
 
   @ForeignKey(() => User)
   @Column(DataType.INTEGER)
@@ -41,10 +50,6 @@ export class UserSetting extends Model {
 
   @UpdatedAt
   updatedAt: Date;
-
-  // $ Relationship
-  @HasOne(() => RegionSetting)
-  regionSetting: RegionSetting;
 
   @BelongsTo(() => User)
   user: User;

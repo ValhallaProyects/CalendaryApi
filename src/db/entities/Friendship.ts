@@ -7,6 +7,8 @@ import {
   ForeignKey,
   DataType,
   BelongsTo,
+  AllowNull,
+  Default,
 } from 'sequelize-typescript';
 import { User } from './User';
 
@@ -27,6 +29,11 @@ export class Friendship extends Model {
   @ForeignKey(() => User)
   @Column(DataType.INTEGER)
   addresseeId: number;
+
+  @AllowNull(false)
+  @Default('pending')
+  @Column(DataType.ENUM(...['pending', 'accepted', 'canceled']))
+  status: string;
 
   @CreatedAt
   createdAt: Date;
