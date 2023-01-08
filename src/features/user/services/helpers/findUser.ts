@@ -1,16 +1,10 @@
-import type { Model, WhereAttributeHash, WhereOptions } from 'sequelize';
-
 import { User } from 'src/db/entities';
 import { findRecord } from 'src/utilities';
+import { findUserParams } from './types';
 
-type findUserParams<M extends Model<any, any>> = {
-  where: WhereOptions<WhereAttributeHash<M>>;
-};
 const findUser = async ({
   where,
-}: findUserParams<User>): Promise<User | null> => {
-  return;
-};
-// await findRecord({ model: User, where });
+}: findUserParams<User>): Promise<User | null> =>
+  await findRecord({ model: User, where });
 
 export { findUser };

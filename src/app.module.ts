@@ -2,14 +2,7 @@ import { ConfigModule } from '@nestjs/config';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { Module } from '@nestjs/common';
 import { UserModule, AuthModule } from './features';
-import {
-  User,
-  UserSetting,
-  Auth,
-  RegionSetting,
-  Event,
-  Friendship,
-} from './db/entities';
+import { User, UserSetting, Auth, Event, Friendship } from './db/entities';
 import { JwtStrategy } from './features/auth/strategies/jwt.strategy';
 
 @Module({
@@ -22,7 +15,7 @@ import { JwtStrategy } from './features/auth/strategies/jwt.strategy';
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
-      models: [User, UserSetting, Auth, RegionSetting, Event, Friendship],
+      models: [User, UserSetting, Auth, Event, Friendship],
       autoLoadModels: true,
       synchronize: true,
     }),

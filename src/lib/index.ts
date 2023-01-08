@@ -1,6 +1,6 @@
 /*
- * Las librerías no son exportadas de manera directa.
- * Estan envueltas en una capa de código propia.
+ * Libraries are not exported directly.
+ * They are wrapped in their own code layer.
  */
 export * from './random-seed';
 export * from './date-fns';

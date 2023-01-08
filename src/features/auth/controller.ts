@@ -1,6 +1,7 @@
 import { Controller, Post, Body } from '@nestjs/common';
 import { ApiBearerAuth, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { GetCodeDto, GetTokenDto } from './dto';
+import { TokenData } from './interfaces';
 import { AuthService } from './service';
 
 @ApiBearerAuth()
@@ -19,7 +20,7 @@ export class AuthController {
   // $ GetToken
   @Post('token')
   @ApiResponse({ status: 200, description: 'Token sended!' })
-  async getToken(@Body() body: GetTokenDto): Promise<{ access_token: string }> {
+  async getToken(@Body() body: GetTokenDto): Promise<TokenData> {
     return this.authService.getToken(body);
   }
 }
