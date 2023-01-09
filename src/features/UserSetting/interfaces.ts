@@ -1,0 +1,3 @@
+interface UserSettingData {}
+
+export { UserSettingData };
