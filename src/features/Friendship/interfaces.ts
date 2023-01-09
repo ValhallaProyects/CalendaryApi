@@ -1,0 +1,3 @@
+interface FriendshipData {}
+
+export { FriendshipData };
