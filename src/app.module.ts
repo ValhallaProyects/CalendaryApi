@@ -1,9 +1,16 @@
 import { ConfigModule } from '@nestjs/config';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { Module } from '@nestjs/common';
-import { UserModule, AuthModule } from './features';
+import {
+  UserModule,
+  AuthModule,
+  EventModule,
+  UserSettingModule,
+  FriendshipModule,
+} from './features';
 import { User, UserSetting, Auth, Event, Friendship } from './db/entities';
-import { JwtStrategy } from './features/auth/strategies/jwt.strategy';
+import { JwtStrategy } from './features/Auth/strategies/jwt.strategy';
+// import { JwtStrategy } from './features/auth/strategies/jwt.strategy';
 
 @Module({
   imports: [
@@ -21,6 +28,9 @@ import { JwtStrategy } from './features/auth/strategies/jwt.strategy';
     }),
     UserModule,
     AuthModule,
+    EventModule,
+    UserSettingModule,
+    FriendshipModule,
   ],
   providers: [JwtStrategy],
 })
