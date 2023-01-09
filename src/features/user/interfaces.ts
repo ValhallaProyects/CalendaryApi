@@ -1,9 +1,8 @@
 interface UserData {
-  id: number;
   email: string;
-  firstName: string;
-  lastName: string;
-  age: number;
+  nickName: string;
+  profilePicture: string;
+  fullName: string;
 }
 
 export { UserData };

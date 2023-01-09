@@ -21,6 +21,7 @@ type FindOrCreateRecordParams<M extends Model<Attributes<M>>> = {
 type findRecordParams<M extends Model<Attributes<M>>> = {
   where: WhereOptions<WhereAttributeHash<M>>;
   model: ModelStatic<M>;
+  options?: any;
 };
 
 export { createRecordParams, FindOrCreateRecordParams, findRecordParams };

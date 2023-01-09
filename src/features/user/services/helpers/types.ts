@@ -1,21 +1,13 @@
-import type {
-  Attributes,
-  Model,
-  WhereAttributeHash,
-  WhereOptions,
-} from 'sequelize';
+import type { Attributes, Model } from 'sequelize';
+import { findRecordParams } from 'src/utilities/types';
 
-type findUserParams<M extends Model<any, any>> = {
-  where: WhereOptions<WhereAttributeHash<M>>;
-};
+type findUserParams<M extends Model<Attributes<M>>> = Pick<
+  findRecordParams<M>,
+  'where' | 'options'
+>;
 
 type CreateUserParams = {
   email: string;
 };
 
-type FindOrCreateUserParams<M extends Model<Attributes<M>, Attributes<M>>> = {
-  defaults: CreateUserParams;
-  where: WhereOptions<Attributes<M>>;
-};
-
-export { CreateUserParams, FindOrCreateUserParams, findUserParams };
+export { CreateUserParams, findUserParams };

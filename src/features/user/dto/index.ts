@@ -5,14 +5,6 @@ import { IsEmail, IsString, Length } from 'class-validator';
     when you use them in your DTOs, ValidationPipe may not be able to properly 
     validate incoming data. For this reason, consider using concrete classes in your DTOs.
 */
-class CreateUserDto {
-  @IsString()
-  @IsEmail()
-  email: string;
+class UpdateUserDto {}
 
-  @IsString()
-  @Length(4, 8)
-  password: string;
-}
-
-export { CreateUserDto };
+export { UpdateUserDto };

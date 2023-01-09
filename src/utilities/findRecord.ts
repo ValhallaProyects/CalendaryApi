@@ -5,6 +5,8 @@ import type { findRecordParams } from './types';
 const findRecord = async <M extends Model<Attributes<M>>>({
   model,
   where,
-}: findRecordParams<M>): Promise<M | null> => await model.findOne({ where });
+  options,
+}: findRecordParams<M>): Promise<M | null> =>
+  await model.findOne({ where, ...options });
 
 export { findRecord };

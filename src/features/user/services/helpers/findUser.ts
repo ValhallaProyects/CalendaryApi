@@ -4,7 +4,8 @@ import { findUserParams } from './types';
 
 const findUser = async ({
   where,
+  options,
 }: findUserParams<User>): Promise<User | null> =>
-  await findRecord({ model: User, where });
+  await findRecord({ model: User, where, options });
 
 export { findUser };
