@@ -1,4 +1,4 @@
-import { HttpException, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 
 // $ UserSetting stuff
@@ -16,12 +16,8 @@ export class UserSettingService {
   ) {}
 
   async getUserSetting(userId: string): Promise<UserSettingData> {
-    try {
-      return await findUserSetting({
-        where: { userId },
-      });
-    } catch (error) {
-      throw new HttpException(error?.msg || '', error?.statusCode || 400);
-    }
+    return await findUserSetting({
+      where: { userId },
+    });
   }
 }

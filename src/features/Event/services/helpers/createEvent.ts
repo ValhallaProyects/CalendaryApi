@@ -1,8 +1,8 @@
-import { User } from 'src/db/entities';
+import { Event } from 'src/db/entities';
 import { createRecord } from 'src/utilities';
-import { CreateUserParams } from './types';
+import { CreateEventParams } from './types';
 
-const createUser = async (data: CreateUserParams): Promise<User | null> =>
-  await createRecord<User>({ data, model: User });
+const createEvent = async (data: CreateEventParams): Promise<Event | null> =>
+  await createRecord<Event>({ data, model: Event });
 
-export { createUser };
+export { createEvent };
