@@ -1,4 +1,4 @@
-import { Injectable, HttpException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { GetCodeDto, GetTokenDto } from './dto';
 import { TokenData } from './interfaces';
@@ -14,13 +14,9 @@ export class AuthService {
   }
 
   async getToken(data: GetTokenDto): Promise<TokenData> {
-    try {
-      const id = await validateEmailAndCode(data);
-      const access_token = this.jwtService.sign({ userId: id });
+    const id = await validateEmailAndCode(data);
+    const access_token = this.jwtService.sign({ userId: id });
 
-      return { access_token };
-    } catch (error) {
-      throw new HttpException(error?.msg || '', error?.statusCode || 400);
-    }
+    return { access_token };
   }
 }

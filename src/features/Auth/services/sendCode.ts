@@ -1,4 +1,4 @@
-import { createUser } from 'src/features/user/services/helpers';
+import { createUser } from 'src/features/User/services/helpers';
 import { createAuth, findAuth, addCodeToAuth } from './helpers';
 
 const sendCode = async (email: string): Promise<number> => {

@@ -1,4 +1,4 @@
-import { HttpException, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 
 // $ Friendship stuff
@@ -16,10 +16,6 @@ export class FriendshipService {
   ) {}
 
   async getFriendship(): Promise<string> {
-    try {
-      return 'friendship';
-    } catch (error) {
-      throw new HttpException(error?.msg || '', error?.statusCode || 400);
-    }
+    return 'friendship';
   }
 }
