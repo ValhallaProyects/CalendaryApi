@@ -20,4 +20,8 @@ export class UserService {
       },
     });
   }
+
+  getGreetings(name: string): string {
+    return `Hola, ${name}`;
+  }
 }
