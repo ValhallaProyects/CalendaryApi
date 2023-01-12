@@ -22,4 +22,9 @@ export class UserController {
   async getUser(@Request() req): Promise<UserData> {
     return await this.userService.getUser(req.user);
   }
+
+  @Get('greetings')
+  getGreetings(@Request() req): string {
+    return this.userService.getGreetings(req.body);
+  }
 }
